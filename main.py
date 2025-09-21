@@ -270,9 +270,27 @@ def main():
         print("❌ Cannot proceed without proxies. Please add proxies to 'proxies.txt'")
         return
     
-    # Auto-calculate bot count based on proxies (proxy count * 10)
-    num_bots = len(proxies_list) * 10
-    print(f"🤖 Auto-calculated bots: {num_bots} (proxies × 10)")
+    # Auto-calculate bot count based on proxies (proxy count * 5)
+    auto_bots = len(proxies_list) * 5
+    print(f"🤖 Auto-calculated bots: {auto_bots} (proxies × 5)")
+    
+    # Get number of bots from user with auto-calculated default
+    try:
+        bot_input = input(f"🤖 Number of bots (press Enter for {auto_bots}): ").strip()
+        num_bots = int(bot_input) if bot_input else auto_bots
+        
+        if num_bots > auto_bots:
+            print(f"⚠️  Warning: {num_bots} bots with {len(proxies_list)} proxies may cause issues.")
+            confirm = input("Continue anyway? (y/N): ").strip().lower()
+            if confirm != 'y':
+                num_bots = auto_bots
+                print(f"🔄 Using recommended {auto_bots} bots instead.")
+        
+    except ValueError:
+        print("❌ Invalid input. Using auto-calculated value.")
+        num_bots = auto_bots
+    
+    print(f"✅ Using {num_bots} bots")
     
     # Get views per bot from user
     try:

@@ -111,7 +111,7 @@ Example:
 ```
 
 ### Bot Configuration
-- **main.py:** Auto-calculated as `proxy_count × 5`
+- **main.py:** Auto-calculated as `proxy_count × 5` (user can override for smaller machines)
 - **main_no_proxy.py:** User-defined (recommended: 5-20)
 
 ### Timing Configuration
