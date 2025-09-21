@@ -271,7 +271,7 @@ def main():
         return
     
     # Auto-calculate bot count based on proxies (proxy count * 10)
-    num_bots = len(proxies_list) * 5
+    num_bots = len(proxies_list) * 10
     print(f"🤖 Auto-calculated bots: {num_bots} (proxies × 10)")
     
     # Get views per bot from user
